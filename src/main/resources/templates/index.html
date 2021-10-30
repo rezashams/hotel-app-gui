@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Hotel Index</title>
+    <meta charset="utf-8">
+    <title>Hotel Management</title>
 </head>
 <body>
-    <h2>Welcome</h2>
-
-
+<div class="container">
+    <div th:if="${session.username}">
+        <h2 >Welcome  <span  th:text="${session.username}"></span> | <a th:href="logout">Logout</a></h2>
+    </div>
+    <div th:unless="${session.username}">
+        <a  th:href="@{login}">Log in</a>
+        <a  th:href="@{registration}">sign up</a>
+    </div>
+</div>
 
 </body>
 </html>
