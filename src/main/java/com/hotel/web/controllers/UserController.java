@@ -31,14 +31,14 @@ public class UserController {
 
     @RequestMapping({"/logout"})
     public String logout(HttpSession session,Model model){
-        session.setAttribute("username",null);
+        session.setAttribute("user",null);
         return "index";
     }
 
     @PostMapping("/login")
     public String login(HttpSession session, @ModelAttribute User user) {
-        if (userService.isAuthenticated(user.getUsername(),user.getPassword())) {
-            session.setAttribute("username",user.getUsername());
+        if (userService.isAuthenticated(user.getEmail(),user.getPassword())) {
+            session.setAttribute("user",user);
             return "redirect:/";
         }
 
@@ -46,17 +46,27 @@ public class UserController {
     }
 
     @GetMapping("/registration")
-    public String registration(Model model) {
-
-        model.addAttribute("user", new User());
+    public String registration(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("user", user==null?new User():user);
 
         return "registration";
     }
 
     @PostMapping("/registration")
     public String registration(HttpSession session, @ModelAttribute User user) {
+
         userService.addUser(user);
-        session.setAttribute("username",user.getUsername());
+        session.setAttribute("firstname",user.getFirstName());
+
+        return "redirect:/";
+    }
+
+
+    @PostMapping("/deleteUser")
+    public String deleteUser(HttpSession session) {
+        String userEmail = session.getAttribute("userEmail").toString();
+        session.removeAttribute("userEmail");
         return "redirect:/";
     }
 

@@ -13,13 +13,28 @@
     <form method="POST"  th:object="${user}" th:action="@{/registration}">
         <h2 >Create your account</h2>
         <div class="form-group">
-            <input type="text" th:field="*{username}" class="form-control" placeholder="Username"
+            <span> First name:  </span><input type="text" th:field="*{firstName}" class="form-control" placeholder="firstName"
                    autofocus="true">
-            <span class="has-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+            <span class="has-error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
         </div>
-
         <div class="form-group">
-            <input type="password" th:field="*{password}" class="form-control" placeholder="Password">
+            <span> Last name:  </span><input type="text" th:field="*{lastName}" class="form-control" placeholder="lastName"
+                   autofocus="true">
+            <span class="has-error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+        </div>
+        <div class="form-group">
+            <span> Email:  </span><input type="text" th:field="*{email}" class="form-control" placeholder="email"
+                   autofocus="true">
+            <span class="has-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+        <div class="form-group">
+            <span> Is Manager:  </span><input type="checkbox" name="active" th:checked="*{isManager}" />
+        </div>
+        <div class="form-group">
+            <span> Is Student:  </span><input type="checkbox" name="active" th:checked="*{isStudent}" />
+        </div>
+        <div class="form-group">
+            <span> Password:  </span><input type="password" th:field="*{password}" class="form-control" placeholder="Password">
             <span class="has-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
         </div>
 

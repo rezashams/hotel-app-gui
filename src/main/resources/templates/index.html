@@ -6,12 +6,30 @@
 </head>
 <body>
 <div class="container">
-    <div th:if="${session.username}">
-        <h2 >Welcome  <span  th:text="${session.username}"></span> | <a th:href="logout">Logout</a></h2>
+    <div th:if="${session.user}">
+        <span>Welcome </span> <b> <span  th:text="${session.user.email}"></span></b> | <a th:href="logout">Log out</a> | <a  th:href="@{registration}">Edit Profile</a> | <a th:href="deleteUser">Delete Profile</a>
     </div>
-    <div th:unless="${session.username}">
+    <div th:unless="${session.user}">
         <a  th:href="@{login}">Log in</a>
         <a  th:href="@{registration}">sign up</a>
+    </div>
+
+
+</div>
+
+<br>
+<br>
+<div class="links-containers">
+    <div class="links">
+        <div class="book">
+            <a  th:href="@{book}">Book Rooms</a>
+        </div>
+        <div class="manage-rooms">
+            <a  th:href="@{manageRooms}">Manage Rooms</a>
+        </div>
+        <div class="manage-discounts">
+            <a  th:href="@{manageDiscounts}">Manage Discounts</a>
+        </div>
     </div>
 </div>
 

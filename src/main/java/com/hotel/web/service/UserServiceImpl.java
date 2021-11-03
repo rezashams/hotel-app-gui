@@ -15,9 +15,9 @@ public class UserServiceImpl implements UserService{
 
     Set<User> users = new HashSet<>();
     @Override
-    public boolean isAuthenticated(String username, String password) {
+    public boolean isAuthenticated(String email, String password) {
         for(User usr:users)
-            if(username.equals(usr.getUsername()) && password.equals(usr.getPassword()))
+            if(email.equals(usr.getEmail()) && password.equals(usr.getPassword()))
                 return true;
 
         return false;
