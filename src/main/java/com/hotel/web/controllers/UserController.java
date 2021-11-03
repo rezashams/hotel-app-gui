@@ -55,6 +55,7 @@ public class UserController {
 
     @PostMapping("/registration")
     public String registration(HttpSession session, @ModelAttribute User user) {
+        userService.addUser(user);
         session.setAttribute("username",user.getUsername());
         return "redirect:/";
     }
