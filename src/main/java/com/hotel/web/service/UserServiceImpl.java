@@ -7,13 +7,16 @@ package com.hotel.web.service;
 import com.hotel.web.model.User;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService{
 
-    Set<User> users = new HashSet<>();
+    List<User> users = new ArrayList<>();
+    long id=0;
     @Override
     public boolean isRegistered(User user) {
         for(User usr:users)
@@ -25,7 +28,25 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User registerUser(User user) {
+        user.setId(++id);
         users.add(user);
         return user;
+    }
+
+    @Override
+    public void deleteUser(User user) {
+        users.remove(user);
+    }
+
+    @Override
+    public User updateUser(User user) {
+        users.removeIf(x -> x.getId()== user.getId());
+        users.add(user);
+       return user;
+    }
+
+    @Override
+    public User signIn(User user) {
+        return users.stream().filter(x ->x.getEmail().equals(user.getEmail())).findFirst().orElse(null);
     }
 }

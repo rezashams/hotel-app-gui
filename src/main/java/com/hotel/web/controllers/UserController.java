@@ -32,13 +32,15 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(HttpSession session, @ModelAttribute User user) {
-        if (userService.isRegistered(user)) {
+    public String login(Model model,HttpSession session,  @ModelAttribute User user) {
+
+        if(!userService.isRegistered(user)) {
+            model.addAttribute("error","You have not an account. please register");
+            return "login";
+        }
+        user = userService.signIn(user);
             session.setAttribute("user",user);
             return "redirect:/";
-        }
-
-        return "login";
     }
 
     @RequestMapping({"/logout"})
@@ -58,26 +60,27 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registration(HttpSession session, @Valid @ModelAttribute User user, BindingResult bindingResult) {
+    public String registration(Model model, HttpSession session, @Valid @ModelAttribute User user, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "registration";
         }
-        if(userService.isRegistered(user)) {
-            session.setAttribute("message","You have an account with this email");
+        User updatedUser = (User)session.getAttribute("user");
+        if(userService.isRegistered(user) && updatedUser==null) {
+            model.addAttribute("message","You have an account with this email");
             return "registration";
         }
-        userService.registerUser(user);
-        session.setAttribute("user",user);
-
+        session.setAttribute("user",updatedUser==null?userService.registerUser(user):userService.updateUser(user));
         return "redirect:/";
     }
 
 
-    @PostMapping("/deleteUser")
+
+    @GetMapping ("/deleteuser")
     public String deleteUser(HttpSession session) {
-        String userEmail = session.getAttribute("userEmail").toString();
-        session.removeAttribute("userEmail");
+        User user = (User) session.getAttribute("user");
+        userService.deleteUser(user);
+        session.removeAttribute("user");
         return "redirect:/";
     }
 

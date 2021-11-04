@@ -11,7 +11,7 @@
 <div class="container">
     <form method="POST"  th:object="${user}" th:action="@{/registration}">
         <h2 >Create your account</h2>
-        <span th:text="${session.message}"></span>
+        <span th:text="${message}"></span>
         <div class="form-group">
             <span> First name:  </span><input type="text" th:field="*{firstName}" class="form-control" placeholder="firstName"
                    autofocus="true">

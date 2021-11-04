@@ -3,25 +3,30 @@
 <head>
     <meta charset="utf-8">
     <title>Log in with your account</title>
-    <link href="/css/main.css" rel="stylesheet">
 </head>
 
 <body>
 <div class="container">
-    <span th:text="${session.message}"></span>
+
     <form  method="POST" th:action="@{/login}" th:object="${user}">
         <h2 class="form-heading">Log in</h2>
-
+        <br>
+        <span th:text="${message}"></span>
+        <span th:text="${error}"></span>
+        <br>
         <div class="form-group">
-            <span th:text="${message}"></span>
+            <span th:text="${session.message}"></span>
+            <span class="has-error" th:text="${session.error}"></span>
             <div>
             </div>
             <input name="email" type="text" class="form-control" placeholder="Email"
-                   autofocus="true" th:field="*{email}"/>
+                   autofocus="true" th:field="*{email}" required/>
+            <span class="has-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
             <div>
             </div>
-            <input name="password" type="password" class="form-control" placeholder="Password" th:field="*{password}" />
-            <span class="has-error" th:text="${error}"></span>
+            <input name="password" type="password" class="form-control" placeholder="Password" th:field="*{password}" required/>
+            <span class="has-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
             <div>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
@@ -30,6 +35,5 @@
     </form>
 </div>
 
-<script src="/js/main.js"></script>
 </body>
 </html>

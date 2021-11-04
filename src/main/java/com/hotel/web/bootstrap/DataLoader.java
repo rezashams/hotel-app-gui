@@ -22,6 +22,7 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         User user = new User();
         user.setFirstName("reza");
+        user.setLastName("shams");
         user.setPassword("123");
         user.setManager(true);
         user.setEmail("rezashams86@gmail.com");

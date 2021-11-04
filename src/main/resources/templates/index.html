@@ -7,7 +7,7 @@
 <body>
 <div class="container">
     <div th:if="${session.user}">
-        <span>Welcome </span> <b> <span  th:text="${session.user.email}"></span></b> | <a th:href="logout">Log out</a> | <a  th:href="@{registration}">Edit Profile</a> | <a th:href="deleteUser">Delete Profile</a>
+        <span>Welcome </span> <b> <span  th:text="${session.user.firstName}"></span></b> | <a th:href="logout">Log out</a> | <a  th:href="@{registration}">Edit Profile</a> | <a th:href="@{deleteuser}">Delete Profile</a>
     </div>
     <div th:unless="${session.user}">
         <a  th:href="@{login}">Log in</a>
@@ -18,7 +18,7 @@
 </div>
 
 <br>
-<span th:text="${session.message}"></span>
+<span th:text="${message}"></span>
 <br>
 <div class="links-containers">
     <div class="links">
