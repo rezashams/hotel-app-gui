@@ -8,6 +8,7 @@
 
 <body>
 <div class="container">
+    <span th:text="${session.message}"></span>
     <form  method="POST" th:action="@{/login}" th:object="${user}">
         <h2 class="form-heading">Log in</h2>
 

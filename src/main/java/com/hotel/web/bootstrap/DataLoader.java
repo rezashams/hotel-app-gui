@@ -26,7 +26,7 @@ public class DataLoader implements CommandLineRunner {
         user.setManager(true);
         user.setEmail("rezashams86@gmail.com");
         user.setStudent(false);
-        userService.addUser(user);
+        userService.registerUser(user);
         System.out.println("users loaded...");
     }
 }

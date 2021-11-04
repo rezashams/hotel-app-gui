@@ -5,12 +5,14 @@ import com.hotel.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -29,21 +31,23 @@ public class UserController {
         return "login";
     }
 
-    @RequestMapping({"/logout"})
-    public String logout(HttpSession session,Model model){
-        session.setAttribute("user",null);
-        return "index";
-    }
-
     @PostMapping("/login")
     public String login(HttpSession session, @ModelAttribute User user) {
-        if (userService.isAuthenticated(user.getEmail(),user.getPassword())) {
+        if (userService.isRegistered(user)) {
             session.setAttribute("user",user);
             return "redirect:/";
         }
 
         return "login";
     }
+
+    @RequestMapping({"/logout"})
+    public String logout(HttpSession session){
+        session.setAttribute("user",null);
+        return "index";
+    }
+
+
 
     @GetMapping("/registration")
     public String registration(Model model, HttpSession session) {
@@ -54,10 +58,17 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registration(HttpSession session, @ModelAttribute User user) {
+    public String registration(HttpSession session, @Valid @ModelAttribute User user, BindingResult bindingResult) {
 
-        userService.addUser(user);
-        session.setAttribute("firstname",user.getFirstName());
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+        if(userService.isRegistered(user)) {
+            session.setAttribute("message","You have an account with this email");
+            return "registration";
+        }
+        userService.registerUser(user);
+        session.setAttribute("user",user);
 
         return "redirect:/";
     }
