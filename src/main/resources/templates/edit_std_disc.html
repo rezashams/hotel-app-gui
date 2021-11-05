@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Student Management System</title>
+    <title>Hotel Management System</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -10,46 +10,37 @@
 </head>
 <body>
 <div th:insert="fragments/menu_bar :: nav"></div>
+
 <br>
 <br>
 <div class = "container">
     <div class = "row">
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-            <h1 class = "text-center"> Create New Room </h1>
+            <h1 class = "text-center"> Update Discount </h1>
             <div class = "card-body">
-                <form th:action="@{/rooms_mgn}" th:object = "${room}" method="POST">
+                <form th:action="@{/disc_mgn/std_disc/{id} (id=${stdDiscount.id})}" th:object = "${stdDiscount}" method="POST">
                     <div class ="form-group">
-                        <label> Student First Name </label>
+                        <label> Name </label>
                         <input
                                 type = "text"
                                 name = "name"
                                 th:field = "*{name}"
                                 class = "form-control"
-                                placeholder="Enter Room Name"
+                                placeholder="Enter Discount Name"
                         />
                     </div>
 
                     <div class ="form-group">
-                        <label> Room Price</label>
+                        <label> Percent </label>
                         <input
                                 type = "text"
-                                name = "price"
-                                th:field = "*{price}"
+                                name = "percent"
+                                th:field = "*{percent}"
                                 class = "form-control"
-                                placeholder="Enter Room Price"
+                                placeholder="Enter  Percent"
                         />
                     </div>
 
-                    <div class ="form-group">
-                        <label> Room Description </label>
-                        <input
-                                type = "text"
-                                name = "description"
-                                th:field = "*{description}"
-                                class = "form-control"
-                                placeholder="Enter Description"
-                        />
-                    </div>
 
                     <div class = "box-footer">
                         <button type="submit" class = "btn btn-primary">

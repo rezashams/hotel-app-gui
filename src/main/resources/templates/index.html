@@ -1,38 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-    <meta charset="utf-8">
-    <title>Hotel Management</title>
+    <meta charset="ISO-8859-1">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
-    <div th:if="${session.user}">
-        <span>Welcome </span> <b> <span  th:text="${session.user.firstName}"></span></b> | <a th:href="logout">Log out</a> | <a  th:href="@{registration}">Edit Profile</a> | <a th:href="@{deleteuser}">Delete Profile</a>
-    </div>
-    <div th:unless="${session.user}">
-        <a  th:href="@{login}">Log in</a>
-        <a  th:href="@{registration}">sign up</a>
-    </div>
 
+<div th:insert="fragments/menu_bar :: nav"></div>
 
-</div>
-
+<!---- Body---------------------------->
+<br>
+<br>
 <br>
 <span th:text="${message}"></span>
 <br>
-<div class="links-containers">
-    <div class="links">
-        <div class="book">
-            <a  th:href="@{book}">Book Rooms</a>
-        </div>
-        <div class="manage-rooms">
-            <a  th:href="@{rooms_mgn}">Manage Rooms</a>
-        </div>
-        <div class="manage-discounts">
-            <a  th:href="@{manageDiscounts}">Manage Discounts</a>
-        </div>
-    </div>
-</div>
+
 
 </body>
 </html>

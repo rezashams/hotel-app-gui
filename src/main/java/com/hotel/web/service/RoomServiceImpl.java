@@ -29,13 +29,14 @@ public class RoomServiceImpl implements RoomService{
 
     @Override
     public Room getRoomId(Long id) {
+
         return rooms.stream().filter(x->x.getId()==id).findFirst().orElse(null);
     }
 
     @Override
     public Room updateRoom(Room room) {
-        Room upRoom = rooms.stream().filter(x->x.getId()==id).findFirst().orElse(null);
-        upRoom=room;
+        Room existRoom = rooms.stream().filter(x->x.getId()==id).findFirst().orElse(null);
+        existRoom=room;
         return room;
     }
 
