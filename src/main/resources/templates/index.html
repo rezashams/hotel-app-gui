@@ -11,12 +11,35 @@
 <body>
 
 <div th:insert="fragments/menu_bar :: nav"></div>
+<br>
+<table >
 
-<!---- Body---------------------------->
-<br>
-<br>
-<br>
-<span th:text="${message}"></span>
+    <tbody>
+    <tr>
+        <td>
+            <div class="row">
+                <div class="col-md-12">
+                    <img class="img-responsive"
+                         src="../static/resources/images/hotel.jpg"
+                         th:src="@{/resources/images/hotel.jpg}"
+                         width="400"
+                         height="500"/>
+                </div>
+            </div>
+        </td>
+        <td style="  text-align: center;">
+            <strong><span>Service-Oriented Architecture  Project</span>  </strong>
+            <br>
+            <strong><span>Team: Reza, Mahdi, Mubeen, Mahmoud</span>  </strong>
+            <br>
+            <strong><span>Copyright (c) 2021 Birmingham City University. All rights reserved</span>  </strong>
+
+        </td>
+    </tr>
+    </tbody>
+
+</table>
+
 <br>
 
 

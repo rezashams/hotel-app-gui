@@ -53,8 +53,7 @@ public class UserController {
 
     @GetMapping("/registration")
     public String registration(Model model, HttpSession session) {
-        User user = (User) session.getAttribute("user");
-        model.addAttribute("user", user==null?new User():user);
+        model.addAttribute("user",new User());
 
         return "registration";
     }
@@ -63,14 +62,14 @@ public class UserController {
     public String registration(Model model, HttpSession session, @Valid @ModelAttribute User user, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
+            model.addAttribute("errMessage","The email is not valid");
             return "registration";
         }
-        User updatedUser = (User)session.getAttribute("user");
-        if(userService.isRegistered(user) && updatedUser==null) {
+        if(userService.isRegistered(user) ) {
             model.addAttribute("message","You have an account with this email");
             return "registration";
         }
-        session.setAttribute("user",updatedUser==null?userService.registerUser(user):userService.updateUser(user));
+        session.setAttribute("user",userService.registerUser(user));
         return "redirect:/";
     }
 

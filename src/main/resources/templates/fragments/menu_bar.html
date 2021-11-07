@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Spring Boot Thymeleaf Application - Fragments</title>
+    <title>MenuBar - Fragments</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
 
     <a  th:unless="${session.user}" class="navbar-brand" th:href="@{login}">Sign in</a>
-    <a  th:unless="${session.user}" class="navbar-brand" href="#">Sign out</a>
+    <a  th:unless="${session.user}" class="navbar-brand" th:href="@{registration}">Register</a>
     <div th:if="${session.user}">
         <span class="navbar-brand">Welcome  <b><span class="navbar-brand" th:text="${session.user.firstName}"></span> </b></span>
         <a class="navbar-brand" th:href="logout">Log out</a>
