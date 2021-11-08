@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2021 Birmingham City University. All rights reserved.
+ * Author:  Reza Shams (rezashams86@gmail.com)
+ */
+
 package com.hotel.web.controllers;
 
 import com.hotel.web.model.User;
@@ -6,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -20,10 +22,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping({"", "/", "index", "index.html"})
-    public String index(Model model){
-        return "index";
-    }
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -35,7 +33,7 @@ public class UserController {
     public String login(Model model,HttpSession session,  @ModelAttribute User user) {
 
         if(!userService.isRegistered(user)) {
-            model.addAttribute("error","You have not an account. please register");
+            model.addAttribute("errMessage","You have not an account. Please register");
             return "login";
         }
         user = userService.signIn(user);
@@ -73,14 +71,32 @@ public class UserController {
         return "redirect:/";
     }
 
+    @GetMapping("/profile/edit")
+    public String ditProfileForm(HttpSession session, Model model) {
+        model.addAttribute("user", session.getAttribute("user"));
+        return "edit_profile";
+    }
+    @PostMapping("/user_mgn")
+    public String updateUser(HttpSession session,
+                             @ModelAttribute("user") User user) {
+        System.out.println(user.getIsManager());
+        userService.updateUser(user);
+        session.setAttribute("user",user);
+        return "redirect:/profile";
+    }
 
-
-    @GetMapping ("/deleteuser")
-    public String deleteUser(HttpSession session) {
+    @GetMapping ("/profile/delete")
+    public String deleteUser(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
         userService.deleteUser(user);
         session.removeAttribute("user");
+        model.addAttribute("successMessage","You were removed successfully");
         return "redirect:/";
+    }
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "user_mgn";
     }
 
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/menu_bar :: nav"></div>
+<br>
+<br>
+<div class = "container">
+    <div class = "row">
+        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <div class = "card-body">
+
+                    <h6>  <strong>Room Name: </strong><span th:text = "${invoice.roomName}" /> </h6>
+                    <h6>  <strong>Room Price: </strong><span th:text = "${invoice.price}" /> </h6>
+                    <h6>  <strong>From: </strong><span th:text = "${invoice.fromDate}" /> </h6>
+                    <h6>  <strong>To: </strong><span th:text = "${invoice.toDate}" /> </h6>
+                    <h6>  <strong>Student Discount: </strong><span th:text = "${invoice.roomName}" /> </h6>
+                    <h6>  <strong>Date Discount: </strong><span th:text = "${invoice.roomName}" /> </h6>
+                    <h6>  <strong>Total: </strong><span th:text = "${invoice.total}" /> </h6>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

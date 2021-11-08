@@ -4,6 +4,8 @@
  */
 package com.hotel.web.controllers;
 
+import com.hotel.web.model.BookedRoom;
+import com.hotel.web.model.Invoice;
 import com.hotel.web.model.Room;
 import com.hotel.web.service.RoomService;
 import com.hotel.web.service.UserService;
@@ -13,6 +15,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 public class RoomController {
@@ -72,4 +78,44 @@ public class RoomController {
         roomService.deleteRoomId(id);
         return "redirect:/rooms_mgn";
     }
+
+    @GetMapping("/book_room")
+    public String listBookRooms(Model model) {
+        model.addAttribute("rooms", roomService.getAllRooms());
+        return "book_room";
+    }
+
+    @GetMapping("/select_room/{id}")
+    public String selectRoom(@PathVariable Long id, Model model) {
+        model.addAttribute("room", roomService.getRoomId(id));
+        BookedRoom bookedRoom = new BookedRoom();
+        bookedRoom.setRoomId(id);
+        bookedRoom.setToDate(new Date());
+        bookedRoom.setFromDate(new Date());
+        model.addAttribute("bookedRoom", bookedRoom);
+
+        return "edit_select_room";
+    }
+
+
+
+    @PostMapping("/invoice")
+    public String invoice(@ModelAttribute("bookedRoom") BookedRoom bookedRoom,  Model model) {
+
+        System.out.println(bookedRoom.getRoomId());
+        Room room = roomService.getRoomId(bookedRoom.getRoomId());
+        Invoice invoice = new Invoice();
+        invoice.setDate(new Date());
+        invoice.setDateDiscount("0.0%");
+        invoice.setStudentDiscount("50%");
+        invoice.setRoomName(room.getName());
+        invoice.setPrice(room.getPrice());
+        invoice.setTotal(room.getPrice()/2);
+        invoice.setFromDate(new Date());
+        invoice.setToDate(new Date());
+        model.addAttribute("invoice", invoice);
+
+        return "invoice";
+    }
+
 }

@@ -68,19 +68,19 @@ public class User {
         this.email = email;
     }
 
-    public boolean isStudent() {
+    public boolean getIsStudent() {
         return isStudent;
     }
 
-    public void setStudent(boolean student) {
+    public void setIsStudent(boolean student) {
         isStudent = student;
     }
 
-    public boolean isManager() {
+    public boolean getIsManager() {
         return isManager;
     }
 
-    public void setManager(boolean manager) {
+    public void setIsManager(boolean manager) {
         isManager = manager;
     }
 

@@ -12,6 +12,11 @@
 
 <div th:insert="fragments/menu_bar :: nav"></div>
 <br>
+
+<div th:if="${successMessage}" class="alert alert-success alert-dismissible in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> <span class="form-text"  th:text="${successMessage}"></span>
+</div>
 <table >
 
     <tbody>
@@ -30,7 +35,13 @@
         <td style="  text-align: center;">
             <strong><span>Service-Oriented Architecture  Project</span>  </strong>
             <br>
-            <strong><span>Team: Reza, Mahdi, Mubeen, Mahmoud</span>  </strong>
+            <strong><span> Reza - Email: reza.shams@mail.bcu.ac.uk </span>  </strong>
+            <br>
+            <strong><span> Mahmoud - Email: mahmoud.elmekkawi@mail.bcu.ac.uk  </span>  </strong>
+            <br>
+            <strong><span> Mubeen - Email: mubeen.khan@mail.bcu.ac.uk </span>  </strong>
+            <br>
+            <strong><span> Mahdi - Email: mahdi.joafshani@mail.bcu.ac.uk </span>  </strong>
             <br>
             <strong><span>Copyright (c) 2021 Birmingham City University. All rights reserved</span>  </strong>
 
