@@ -19,7 +19,7 @@
                 <form th:action="@{/invoice}" th:object = "${bookedRoom}" method="POST">
                     <h1 class = "text-center">  <span>Room Number: </span><span th:text = "*{roomId}" /> </h1>
                         <div class="form-group">
-                            <label> From Date: </label>
+                            <label> From Date  (yyyy-MM-dd): </label>
                             <input
                                     type="text"
                                     class="form-control"
@@ -28,12 +28,10 @@
                                     name = "fromDate"
                                     autocomplete="off"
                                     th:field="*{fromDate}"/>
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                            </div>
+
                         </div>
                         <div class="form-group">
-                            <label> To Date </label>
+                            <label> To Date (yyyy-MM-dd):</label>
                             <input
                                     type="text"
                                     class="form-control"
@@ -42,9 +40,7 @@
                                     name = "toDate"
                                     autocomplete="off"
                                     th:field="*{toDate}"/>
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                            </div>
+
                         </div>
                     <input type="hidden" id="roomName" name="roomName"  th:field="*{roomId}"/>
                     <div class = "box-footer">

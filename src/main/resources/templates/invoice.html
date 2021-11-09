@@ -16,14 +16,67 @@
     <div class = "row">
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
             <div class = "card-body">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h6>  <strong>Room Name: </strong> </h6>
+                                </td>
+                                <td>
+                                    <span th:text = "${invoice.roomName}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h6>  <strong>Room Price:  </strong> </h6>
+                                </td>
+                                <td>
+                                    <span th:text = "${invoice.price}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h6>  <strong>From:  </strong> </h6>
+                                </td>
+                                <td>
+                                    <span th:text = "${#dates.format(invoice.fromDate, 'yyyy-MM-dd')}"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h6>  <strong>To:  </strong> </h6>
+                                </td>
+                                <td>
+                                    <span th:text = "${#dates.format(invoice.toDate, 'yyyy-MM-dd')}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h6>  <strong>Student Discount: </strong> </h6>
+                                </td>
+                                <td>
+                                    <span th:text = "${invoice.studentDiscount}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h6>  <strong>Special Holiday Discount: </strong> </h6>
+                                </td>
+                                <td>
+                                    <span th:text = "${invoice.DateDiscount}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h6>  <strong>Total:</strong> </h6>
+                                </td>
+                                <td>
+                                    <span th:text = "${invoice.total}" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                    <h6>  <strong>Room Name: </strong><span th:text = "${invoice.roomName}" /> </h6>
-                    <h6>  <strong>Room Price: </strong><span th:text = "${invoice.price}" /> </h6>
-                    <h6>  <strong>From: </strong><span th:text = "${invoice.fromDate}" /> </h6>
-                    <h6>  <strong>To: </strong><span th:text = "${invoice.toDate}" /> </h6>
-                    <h6>  <strong>Student Discount: </strong><span th:text = "${invoice.roomName}" /> </h6>
-                    <h6>  <strong>Date Discount: </strong><span th:text = "${invoice.roomName}" /> </h6>
-                    <h6>  <strong>Total: </strong><span th:text = "${invoice.total}" /> </h6>
             </div>
         </div>
     </div>

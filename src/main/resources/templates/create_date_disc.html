@@ -7,10 +7,6 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
-    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>
-    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}"/>
-    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/5.11.2/css/all.css} "/>
 </head>
 <body>
 <div th:insert="fragments/menu_bar :: nav"></div>
@@ -30,6 +26,7 @@
                                 th:field = "*{name}"
                                 class = "form-control"
                                 placeholder="Enter Discount Name"
+                                required
                         />
                     </div>
 
@@ -41,10 +38,11 @@
                                 th:field = "*{percent}"
                                 class = "form-control"
                                 placeholder="Enter Discount Percent"
+                                required
                         />
                     </div>
                     <div class ="form-group">
-                    <label> Discount Date </label>
+                    <label> Discount Date (yyyy-MM-dd)</label>
                         <div class="input-group date">
                             <input
                                     type="text"
@@ -53,10 +51,8 @@
                                     id="date"
                                     name = "date"
                                     autocomplete="off"
-                                    th:field="*{date}"/>
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                            </div>
+                                    th:field="*{date}"
+                                    required/>
                         </div>
                     </div>
 

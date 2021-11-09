@@ -5,6 +5,8 @@
 package com.hotel.web.model;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Invoice {
@@ -13,7 +15,11 @@ public class Invoice {
     private  String  studentDiscount;
     private  String  DateDiscount;
     private Date date;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fromDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date toDate;
     private int total;
 

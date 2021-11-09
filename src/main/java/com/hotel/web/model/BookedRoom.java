@@ -4,13 +4,19 @@
  */
 package com.hotel.web.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class BookedRoom {
 
-   private long roomId;
-   private Date fromDate;
-   private Date toDate;
+    private long roomId;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fromDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date toDate;
 
     public long getRoomId() {
         return roomId;

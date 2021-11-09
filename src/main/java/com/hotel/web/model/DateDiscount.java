@@ -4,12 +4,16 @@
  */
 package com.hotel.web.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class DateDiscount {
     private long id;
     private String name;
     private int percent;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
     public long getId() {

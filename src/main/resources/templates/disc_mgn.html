@@ -36,7 +36,7 @@
     <tr th:each = "dateDisc: ${dateDiscs}">
       <td th:text = "${dateDisc.name}"></td>
       <td th:text = "${dateDisc.percent}"></td>
-      <td th:text = "${dateDisc.date}"></td>
+      <td th:text = "${#dates.format(dateDisc.date, 'yyyy-MM-dd')}"></td>
       <td>
         <a th:href = "@{/disc_mgn/edit/date_disc/{id}(id=${dateDisc.id})}"
            class = "btn btn-primary">Update</a>

@@ -102,7 +102,6 @@ public class RoomController {
     @PostMapping("/invoice")
     public String invoice(@ModelAttribute("bookedRoom") BookedRoom bookedRoom,  Model model) {
 
-        System.out.println(bookedRoom.getRoomId());
         Room room = roomService.getRoomId(bookedRoom.getRoomId());
         Invoice invoice = new Invoice();
         invoice.setDate(new Date());
@@ -111,8 +110,8 @@ public class RoomController {
         invoice.setRoomName(room.getName());
         invoice.setPrice(room.getPrice());
         invoice.setTotal(room.getPrice()/2);
-        invoice.setFromDate(new Date());
-        invoice.setToDate(new Date());
+        invoice.setFromDate(bookedRoom.getFromDate());
+        invoice.setToDate(bookedRoom.getToDate());
         model.addAttribute("invoice", invoice);
 
         return "invoice";
