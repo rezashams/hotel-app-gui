@@ -44,7 +44,7 @@ public class UserController {
     @RequestMapping({"/logout"})
     public String logout(HttpSession session){
         session.setAttribute("user",null);
-        return "index";
+        return "redirect:/";
     }
 
 
@@ -67,19 +67,20 @@ public class UserController {
             model.addAttribute("message","You have an account with this email");
             return "registration";
         }
-        session.setAttribute("user",userService.registerUser(user));
+        User savedUser = userService.registerUser(user);
+        session.setAttribute("user",savedUser);
         return "redirect:/";
     }
 
     @GetMapping("/profile/edit")
-    public String ditProfileForm(HttpSession session, Model model) {
-        model.addAttribute("user", session.getAttribute("user"));
+    public String editProfileForm(HttpSession session, Model model) {
+        User sessionUser = (User)  session.getAttribute("user");
+        model.addAttribute("user",sessionUser);
         return "edit_profile";
     }
     @PostMapping("/user_mgn")
     public String updateUser(HttpSession session,
                              @ModelAttribute("user") User user) {
-        System.out.println(user.getIsManager());
         userService.updateUser(user);
         session.setAttribute("user",user);
         return "redirect:/profile";

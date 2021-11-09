@@ -11,7 +11,7 @@
     <a  th:unless="${session.user}" class="navbar-brand" th:href="@{registration}">Register</a>
     <div th:if="${session.user}">
         <span class="navbar-brand">Welcome  <b><span class="navbar-brand" th:text="${session.user.firstName}"></span> </b></span>
-        <a class="navbar-brand" th:href="logout">Log out</a>
+        <a class="navbar-brand" th:href="@{/logout}">Log out</a>
     </div>
 
 

@@ -77,15 +77,25 @@
                     </div>
 
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="*{isManager}" id="isManager">
+                        <input
+                                class="form-check-input"
+                                type="checkbox"
+                                th:value="*{isManager}"
+                                th:field="*{isManager}"
+                                id="isManager">
                         <label class="form-check-label" for="isManager">
-                            Is Manager
+                            Manager
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="*{isStudent}" id="isStudent">
+                        <input
+                                class="form-check-input"
+                                type="checkbox"
+                                th:value="*{isStudent}"
+                                th:field="*{isStudent}"
+                                id="isStudent">
                         <label class="form-check-label" for="isStudent">
-                            Is Student
+                            Student
                         </label>
                     </div>
                     <br>
