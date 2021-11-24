@@ -30,18 +30,34 @@ public class RoomServiceImpl implements RoomService{
     @Override
     public Room getRoomId(Long id) {
 
-        return rooms.stream().filter(x->x.getId()==id).findFirst().orElse(null);
+        for(int i=0;i< rooms.size();i++) {
+            if(rooms.get(i).getId()==id) {
+                return rooms.get(i);
+            }
+        }
+        return null;
     }
 
     @Override
     public Room updateRoom(Room room) {
-        Room existRoom = rooms.stream().filter(x->x.getId()==id).findFirst().orElse(null);
-        existRoom=room;
+        for(int i=0;i< rooms.size();i++) {
+            if(rooms.get(i).getId()==id) {
+                rooms.remove(i);
+                break;
+            }
+        }
+        rooms.add(room);
         return room;
     }
 
     @Override
     public void deleteRoomId(Long id) {
-        rooms.removeIf(x->x.getId()==id);
+
+        for(int i=0;i< rooms.size();i++) {
+            if(rooms.get(i).getId()==id) {
+                rooms.remove(i);
+                break;
+            }
+        }
     }
 }

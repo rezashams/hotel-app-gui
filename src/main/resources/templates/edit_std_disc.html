@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="ISO-8859-1">
+    <meta charset="ISO-8859-1"/>
     <title>Hotel Management System</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
+          crossorigin="anonymous"/>
 </head>
 <body>
-<div th:insert="fragments/menu_bar :: nav"></div>
+<div th:replace="fragments/menu_bar :: nav"></div>
 
-<br>
-<br>
+<br/>
+<br/>
 <div class = "container">
     <div class = "row">
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
@@ -20,14 +20,8 @@
             <div class = "card-body">
                 <form th:action="@{/disc_mgn/std_disc/{id} (id=${stdDiscount.id})}" th:object = "${stdDiscount}" method="POST">
                     <div class ="form-group">
-                        <label> Name </label>
-                        <input
-                                type = "text"
-                                name = "name"
-                                th:field = "*{name}"
-                                class = "form-control"
-                                placeholder="Enter Discount Name"
-                        />
+                        <label> <b>Student discount </b> </label>
+
                     </div>
 
                     <div class ="form-group">
@@ -38,6 +32,7 @@
                                 th:field = "*{percent}"
                                 class = "form-control"
                                 placeholder="Enter  Percent"
+                                th:required="required"
                         />
                     </div>
 

@@ -40,13 +40,22 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User updateUser(User user) {
-        users.removeIf(x -> x.getId()== user.getId());
+        for(int i=0;i< users.size();i++) {
+            if(users.get(i).getId()==user.getId()) {
+                users.remove(i);
+                break;
+            }
+        }
         users.add(user);
-       return user;
+        return user;
     }
 
     @Override
     public User signIn(User user) {
-        return users.stream().filter(x ->x.getEmail().equals(user.getEmail())).findFirst().orElse(null);
+        for(int i=0;i< users.size();i++) {
+            if(users.get(i).getEmail().equals(user.getEmail()))
+                return users.get(i);
+        }
+            return null;
     }
 }

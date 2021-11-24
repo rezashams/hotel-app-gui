@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="ISO-8859-1">
+  <meta charset="ISO-8859-1"/>
   <title>Hotel Management System</title>
   <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+        crossorigin="anonymous"/>
 </head>
 <body>
-<div th:insert="fragments/menu_bar :: nav"></div>
-<br>
-<br>
+<div th:replace="fragments/menu_bar :: nav"></div>
+<br/>
+<br/>
 <div class = "container">
   <div class = "row">
     <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
@@ -26,7 +26,7 @@
                     th:field = "*{firstName}"
                     class = "form-control"
                     placeholder="Enter First Name"
-                    required
+                    th:required="required"
             />
           </div>
 
@@ -38,7 +38,7 @@
                     th:field = "*{lastName}"
                     class = "form-control"
                     placeholder="Enter Last Name"
-                    required
+                    th:required="required"
             />
           </div>
 
@@ -50,7 +50,7 @@
                     th:field = "*{email}"
                     class = "form-control"
                     placeholder="Enter Email"
-                    required
+                    th:required="required"
             />
           </div>
 
@@ -62,7 +62,7 @@
                     th:field = "*{password}"
                     class = "form-control"
                     placeholder="Enter password"
-                    required
+                    th:required="required"
             />
           </div>
 
@@ -72,7 +72,7 @@
                     type="checkbox"
                     th:value="*{isManager}"
                    th:field="*{isManager}"
-                    id="isManager">
+                    id="isManager"/>
             <label class="form-check-label" for="isManager">
               Manager
             </label>
@@ -83,12 +83,12 @@
                     type="checkbox"
                     th:value="*{isStudent}"
                     th:field="*{isStudent}"
-                    id="isStudent">
+                    id="isStudent"/>
             <label class="form-check-label" for="isStudent">
               Student
             </label>
           </div>
-          <br>
+          <br/>
 
           <div class = "box-footer">
             <button type="submit" class = "btn btn-primary">

@@ -4,25 +4,19 @@
  */
 package com.hotel.web.model;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 
 public class User {
 
     private Long id;
 
-    @NotEmpty(message = "The First name can't be null")
     private String firstName;
 
-    @NotEmpty(message = "The Last name can't be null")
     private String lastName;
 
-    @NotEmpty(message = "The Email can't be null")
-    @Email(message = "The Email is not valid")
     private String email;
 
-    @NotEmpty(message = "The Password can't be null")
     private String password;
+
     private  boolean isStudent;
     private boolean isManager;
 

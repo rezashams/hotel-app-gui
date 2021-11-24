@@ -5,8 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>1.4.0.RELEASE</version>
 	</parent>
 	<groupId>com.hotel</groupId>
 	<artifactId>hotel-gui</artifactId>
@@ -14,9 +13,9 @@
 	<name>hotel-app-gui</name>
 	<description>gui for a hotel project</description>
 	<properties>
-		<java.version>8</java.version>
-		<maven.compiler.source>8</maven.compiler.source>
-		<maven.compiler.target>8</maven.compiler.target>
+		<java.version>7</java.version>
+		<maven.compiler.source>7</maven.compiler.source>
+		<maven.compiler.target>7</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>

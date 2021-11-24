@@ -5,7 +5,6 @@
 package com.hotel.web.service;
 
 import com.hotel.web.model.DateDiscount;
-import com.hotel.web.model.Room;
 import com.hotel.web.model.StudentDiscount;
 import org.springframework.stereotype.Service;
 
@@ -37,13 +36,24 @@ public class DiscountServiceImpl implements DiscountService{
 
     @Override
     public DateDiscount getDateDiscountId(Long id) {
-        return dateDiscounts.stream().filter(x->x.getId()==id).findFirst().orElse(null);
+        for(int i=0;i< dateDiscounts.size();i++) {
+            if(dateDiscounts.get(i).getId()==id) {
+                return dateDiscounts.get(i);
+            }
+        }
+        return null;
     }
 
     @Override
     public DateDiscount updateDateDiscount(DateDiscount dateDiscount) {
-        DateDiscount existDateDiscount = dateDiscounts.stream().filter(x->x.getId()==id).findFirst().orElse(null);
-        existDateDiscount=dateDiscount;
+
+        for(int i=0;i< dateDiscounts.size();i++) {
+            if(dateDiscounts.get(i).getId()==id) {
+                dateDiscounts.remove(i);
+                break;
+            }
+        }
+        dateDiscounts.add(dateDiscount);
         return dateDiscount;
     }
 
@@ -60,6 +70,12 @@ public class DiscountServiceImpl implements DiscountService{
 
     @Override
     public void deleteDateDiscountId(Long id) {
-        dateDiscounts.removeIf(x->x.getId()==id);
+
+        for(int i=0;i< dateDiscounts.size();i++) {
+            if(dateDiscounts.get(i).getId()==id) {
+                dateDiscounts.remove(i);
+                break;
+            }
+        }
     }
 }

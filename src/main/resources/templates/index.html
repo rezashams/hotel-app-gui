@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-    <meta charset="ISO-8859-1">
+    <meta charset="ISO-8859-1"/>
     <title>Hotel Management System</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
+          crossorigin="anonymous"/>
 </head>
 <body>
 
-<div th:insert="fragments/menu_bar :: nav"></div>
-<br>
-
+<div th:replace="fragments/menu_bar :: nav"></div>
+<br/>
 <div th:if="${successMessage}" class="alert alert-success alert-dismissible in">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Success!</strong> <span class="form-text"  th:text="${successMessage}"></span>
 </div>
-<table >
+<table>
 
     <tbody>
     <tr>
@@ -34,15 +33,15 @@
         </td>
         <td style="  text-align: center;">
             <strong><span>Service-Oriented Architecture  Project</span>  </strong>
-            <br>
+            <br/>
             <strong><span> Reza - Email: reza.shams@mail.bcu.ac.uk </span>  </strong>
-            <br>
+            <br/>
             <strong><span> Mahmoud - Email: mahmoud.elmekkawi@mail.bcu.ac.uk  </span>  </strong>
-            <br>
+            <br/>
             <strong><span> Mubeen - Email: mubeen.khan@mail.bcu.ac.uk </span>  </strong>
-            <br>
+            <br/>
             <strong><span> Mahdi - Email: mahdi.joafshani@mail.bcu.ac.uk </span>  </strong>
-            <br>
+            <br/>
             <strong><span>Copyright (c) 2021 Birmingham City University. All rights reserved</span>  </strong>
 
         </td>
@@ -50,9 +49,6 @@
     </tbody>
 
 </table>
-
-<br>
-
-
 </body>
+
 </html>
